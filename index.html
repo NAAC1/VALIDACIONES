@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de Registro</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+    
+    <h1>Formulario de registro</h1>
+    <form
+      action="."
+      oninput="range_control_value.value = range_control.valueAsNumber"
+    >
+      <!-- validar nombre -->
+        <label for="name_control">Nombre:</label> <input type="text" name="name_control" autofocus required />
+        <br />
+        <!-- validar email -->
+        <label for="email_control">Correo Electrónico:</label> <input type="email" name="email_control" required />
+        <br />
+        <!-- validar url -->
+        <label for="url_control">URL:</label>
+        <input
+          type="url" name="url_control" placeholder="Escribe la URL de tu página web personal"
+        />
+        <br />
+        <!-- validar fecha de control -->
+        <label for="date_control">Fecha:</label> <input type="date" name="date_control" />
+        <br />
+        <!-- validar hora -->
+        <label for="time_control">Tiempo:</label> <input type="time" name="time_control" />
+        <br />
+        <!-- validar fecha y hora de nacimiento -->
+        <label for="datetime_control">Fecha y hora de nacimiento:</label>
+        <input type="datetime" name="datetime_control" />
+        <br />
+        <!-- validar mes -->
+        <label for="month_control">Mes:</label> <input type="month" name="month_control" />
+        <br />
+        <!-- validar semana -->
+        <label for="week_control">Semana:</label> <input type="week" name="week_control" />
+        <br />
+        <!-- validar numero maximo 10-->
+        <label for="number_control">Número (min -10, max 10):</label>
+        <input
+          type="number"
+          name="number_control"
+          min="-10"
+          max="10"
+          value="0"
+        />
+        <br />
+        <!-- validar intervalo -->
+        <label for="range_control">Intervalo (min 0, max 10):</label>
+        <div>
+            <input type="range" name="range_control" min="0" max="10" value="0" />
+            <output for="range_control" name="range_control_value">0</output>
+        </div>
+        <br />
+        <!-- validar telefono -->
+        <label for="tel_control">Teléfono:</label> <input type="tel" name="tel_control" />
+        <br />
+        <!-- validar termino de busqueda -->
+        <label for="search_control">Término de búsqueda:</label> <input type="search" name="search_control" />
+        <br />
+        <!-- validar color favorito -->
+        <label for="color_control">Color Favorito:</label> <input type="color" name="color_control" />
+        <br />
+        <input type="submit" value="Submit!" />
+      
+    </form>
+  </body>
+</html>
