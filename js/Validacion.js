@@ -62,13 +62,34 @@ console.log(validarurl(" ww.lawebdelprogramador.com/codigo/JavaScript/2360-funci
 console.log(validarUrl("http://www-google.com"))
 console.log(validarUrl("http://www.google.com"))
 console.log(validarUrl(" "))
+
+
 //4-validar fecha de control
+function verFormato(atributoFormato){
+    console.log("funciona")
+    console.log(document.querySelector(atributoFormato).value)
+    document.querySelector(atributoFormato).value;
+}
 
 //5-validar hora
+function verHora(hora){
+    const hora = horaVali.trim();
+    const pattern = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/
+    if (typeof horaVali !== 'string'|| horaVali === "" || !pattern.test(horaVale)){
+console.log("entro en el if")
+    return false
+    } else {
+    return true
+    }
+    }
+    console.log(verHora("20:30")) 
+
+
+
 //6-validar fecha y hora de nacimiento
 function validarFecha(fecha1){
     const fecha = fecha1.trim();
-    const pattern = /^\d{4}([\-/. ])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/
+    const pattern = /^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})(\s)([0-1][0-9]|2[0-3])(:)([0-5][0-9])$/'/
     if (typeof fecha !== 'string'|| fecha === "" || !pattern.test(fecha)){
 console.log("entro en el if")
     return false
@@ -81,10 +102,24 @@ console.log("entro en el if")
     console.log(validarFecha(" 09-04-2023 "))
     document.querySelector("[type='date']");
 function mirarFecha(){
-    console.log(document.querySelector("[type=date]").value);
+    console.log(document.querySelector("[type=date]").value);// busca en la pagina un elemento de html que cumpla el query selector y devuelve el valor del input
 }
+
 //7-validar mes
+function validarMesMes(mes) {
+    const vMes = mes.trim(); //limpiar el dato de espacio
+    const pattern = /m,,kj/;
+   //guardo el patron que necesito para comprobar el email 
+    if (typeof vMes !== 'string' || vMes === "" || !pattern.test(vMes)) {
+        console.log("entro en el if")
+        return false
+    } else {
+        return true
+    }
+}
 //8-validar semana
+
+
 //9-validar numero maximo 10
 //10-validar intervalo
 //11-validar telefono
