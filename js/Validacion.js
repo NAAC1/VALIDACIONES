@@ -44,25 +44,20 @@ console.log(validarEmail(" nat@.es "))
     //**Que el @ este en medio de un nombre de usuario y el email que termine en punto extension del servidor, restringir los listados de servidores y enviar mensaje */
 
     //3-validar url
-    function validarurl(miurl) {
-        const url = miurl.trim();//con trim elimina los espacios sobrantes delante y detras del texto
-        const pattern =  /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
-        //if(!pattern.test(input.value)){
-        if (typeof url !== 'string' || url === "" || !pattern.test(url)) {/*El pattern.test(name)se utiliza para que el usuario no meta caracteres eje:+?``[] */
-                console.log("entro en el if")
-                return false
-        } else {
-                return true
-        }
+function validarURL(url1){
+    const url = url1.trim(); // con trim elimina los espacios sobrantes delante y detras
+    const pattern = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/; // la parte roja con letras es lenguaje reyes para validar //lo amarillo es para agrupar // el + es para repetir las veces que quiera
+    // console.log("sin liampiar: ", nombre, " y limpio: ", name)
+    if (typeof url !== 'string'|| url === "" || !pattern.test(url)){ //la exclamacion (!) hace la frase negativa, esta preguntando si name no es un string || comprobar que no sea un caracter vacio || para evitar que el usuario meta cosas que no sean letras, solo pude poner letras
+    console.log("entro en el if")
+        return false
+    } else {
+        return true
+    }
 }
-console.log(validarurl(" https://www.lawebdelprogramador.com/codigo/JavaScript/2360-funcion-para-validar-si-una-url-es-correcta.html"))
-console.log(validarurl("    "))
-console.log(validarurl(" ww.lawebdelprogramador.com/codigo/JavaScript/2360-funcion-para-validar-si-una-url-es "))
-
-console.log(validarUrl("http://www-google.com"))
-console.log(validarUrl("http://www.google.com"))
-console.log(validarUrl(" "))
-
+console.log(validarURL("https://www.google.com"))
+console.log(validarURL(" http:/barcelonageeks.com/como-validar-una-url-usando-una-expresion-regular-en-javascript "))
+console.log(validarURL(" httresion-regular-en-javascript/ "))
 
 //4-validar fecha de control
 function verFormato(atributoFormato){
@@ -72,24 +67,37 @@ function verFormato(atributoFormato){
 }
 
 //5-validar hora
-function verHora(hora){
-    const hora = horaVali.trim();
+function validarhora(tiempo) {
+    const hora = tiempo.trim();
     const pattern = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/
-    if (typeof horaVali !== 'string'|| horaVali === "" || !pattern.test(horaVale)){
-console.log("entro en el if")
-    return false
+    if (typeof hora !== 'string' || hora === "" || !pattern.test(hora)) {
+        console.log("entro en el if")
+        return false
     } else {
-    return true
+        return true
     }
-    }
-    console.log(verHora("20:30")) 
-
+}
+console.log(validarhora(" 12:40 "))
+console.log(validarhora("  "))
+console.log(validarhora(" 09-04-2023 "))
 
 
 //6-validar fecha y hora de nacimiento
+
+function validarFecha(date) {
+    const dateTime = date.trim();
+    const pattern = /^([0-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}\s*-\s*([01][0-9]|2[0-3]):[0-5][0-9]$/;
+    return pattern.test(dateTime);
+}
+
+console.log(validarFecha("09/05/2023-10:30")); // Devuelve true, el formato es válido
+console.log(validarFecha("10:03 agosto "));   // Devuelve false, formato incorrecto
+console.log(validarFecha("2023/05/08 20:40 "));// Devuelve false, formato incorrecto
+
+
 function validarFecha(fecha1){
     const fecha = fecha1.trim();
-    const pattern = /^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})(\s)([0-1][0-9]|2[0-3])(:)([0-5][0-9])$/'/
+    const pattern =/mkm/ 
     if (typeof fecha !== 'string'|| fecha === "" || !pattern.test(fecha)){
 console.log("entro en el if")
     return false
@@ -105,18 +113,23 @@ function mirarFecha(){
     console.log(document.querySelector("[type=date]").value);// busca en la pagina un elemento de html que cumpla el query selector y devuelve el valor del input
 }
 
+
+
 //7-validar mes
 function validarMesMes(mes) {
-    const vMes = mes.trim(); //limpiar el dato de espacio
-    const pattern = /m,,kj/;
-   //guardo el patron que necesito para comprobar el email 
+    const vMes = mes.trim();
+    //*^[A-Z] asegura que el mes comience con una letra mayúscula, [a-z]{2,8} verifica que el resto del mes tenga de 2 a 8 letras minúsculas, \sde\s asegura que haya un espacio y la palabra "de" entre el mes y el año.\d{4} verifica que el año tenga exactamente 4 dígitos
+    const pattern = /^[A-Z][a-z]{2,8}\sde\s\d{4}$/;
     if (typeof vMes !== 'string' || vMes === "" || !pattern.test(vMes)) {
-        console.log("entro en el if")
-        return false
+        return false;
     } else {
-        return true
+        return true;
     }
 }
+
+console.log(validarMesMes("Agosto de 2023")); // Devuelve true, el formato es válido
+console.log(validarMesMes("Septiembre 2023")); // Devuelve false, formato incorrecto
+console.log(validarMesMes(" de 2022")); // Devuelve true, el formato es válido
 //8-validar semana
 
 
